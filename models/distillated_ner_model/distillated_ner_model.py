@@ -1,4 +1,17 @@
+import numpy as np
+import torch
+from torch import nn
+from transformers import AutoModelForTokenClassification, AutoTokenizer, DataCollatorForTokenClassification
+from torch.utils.data import DataLoader
+from datasets import load_dataset
+from typing import Dict, List
+from torch.optim.lr_scheduler import LambdaLR
+from seqeval.metrics import f1_score, accuracy_score
 from transformers import BertConfig
+
+
+device = torch.device('cuda' if torch.cuda.is_available else 'cpu')
+device
 
 checkpoint = 'bert-base-cased'
 
